@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--STATUS OK-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>新版本推一把后台管理系统</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/login.css">
+
+</head>
+<body>
+<div class="tpl-wrap">
+    <div class="tpl-user-modal-wrapper">
+        <div class="tpl-modal">
+            <a href="../../index.html" target="_blank" class="logo"><img src="../../static/images/logo.jpg" alt=""></a>
+            
+            <div class="tpl-modal-item">
+                <div class="left-form-item">
+                    <form action="" autocomplete="off">
+                        <p class="sub-title">layAdmin管理系统-注册通行证</p>
+                        <div class="group">
+                            <label><i class="fa fa-user-o"></i></label>
+                            <input type="text" name="username" class="inp" placeholder="请输入用户名">
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-unlock-alt"></i></label>
+                            <input type="password" name="password" class="inp" placeholder="请输入密码">
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-lock"></i></label>
+                            <input type="password" name="password1" class="inp" placeholder="请重新输入密码">
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-envelope-o"></i></label>
+                            <input type="text" name="email" class="inp" placeholder="请输入邮箱地址">
+                            <a class="send-mail-code">发送验证码</a>
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-barcode"></i></label>
+                            <input type="text"  name="code" class="inp" placeholder="请输入验证码">
+                            <!--<img src="/tuiyiba/public/admin/user/captcha" class="code-img" alt="">-->
+                        </div>
+                        <div class="group">
+                            <button class="submit">立即注册</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="right-bg-item" style="margin: 5% 0;">
+                    <img src="../../static/images/right-bg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/js/app.js"></script>
+<script>
+    $("form").submit(function(e){
+        e.preventDefault();
+        let username = $("input[name='username']").val();
+        let pass = $("input[name='password']").val();
+        let pass1 = $("input[name='password1']").val();
+        let email = $("input[name='email']").val();
+        let code = $("input[name='code']").val();
+        let regmail = /(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$)|(^$)/;
+        if (username == '') {
+            layer.msg('用户名不能为空');
+        } else if (pass == '') {
+            layer.msg('密码不能为空');
+        } else if (pass1 == '') {
+            layer.msg('重复密码不能为空');
+        } else if (pass != pass1) {
+            layer.msg('两次输入的密码不一致');
+        } else if (email == '') {
+            layer.msg('邮箱不能为空');
+        } else if (!regmail.test(email)) {
+            layer.msg('邮箱格式错误');
+        } else if (code == '') {
+            layer.msg('验证码不能为空');
+        } else {
+            layer.load(1);
+            $.ajax({
+                url: "{:url('register')}",
+                type: 'post',
+                data: {
+                    username: username,
+                    password: pass,
+                    password1: pass1,
+                    email: email,
+                    code: code
+                },
+                success: function (d) {
+                    layer.closeAll('loading');
+                    layer.msg(d.msg);
+                },
+                error: function () {
+                    layer.msg('网络错误');
+                    layer.closeAll('loading')
+                }
+            })
+        }
+        return false;
+    });
+    // 发送邮箱验证码
+    $('.send-mail-code').on('click',function(){
+        let d = $(this);
+        let email = $("input[name='email']").val();
+        let regmail = /(^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+$)|(^$)/;
+        if (d.hasClass('wait')) {
+            return false;
+        } else {
+            if (email == '') {
+                layer.msg('请输入邮箱');
+            } else if (!regmail.test(email)) {
+                layer.msg('错误的邮箱格式');
+            } else {
+                // 发送请求
+                layer.load(1);
+                $.ajax({
+                    url: "{:url('sendMailCode')}",
+                    type: 'post',
+                    data: {
+                        email: email
+                    },
+                    success: function (d) {
+                        layer.closeAll('loading');
+                        layer.msg(d.msg);
+                    },
+                    error: function (e) {
+                        layer.closeAll('loading');
+                        layer.msg(e);
+                    }
+                })
+                let t = 60;
+                d.addClass('wait').text(t+'s');
+                let timer = setInterval(function () {
+                    t--;
+                    d.text(t+'s');
+                    if (t == 0) {
+                        clearInterval(timer);
+                        d.text('发送验证码').removeClass('wait');
+                    }
+                },1000);
+            }
+        }
+    })
+</script>
+</body>
+</html>

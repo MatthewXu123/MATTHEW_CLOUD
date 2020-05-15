@@ -1,0 +1,20 @@
+<div class="tpl-right-bar <!--如果有多个侧边栏时，请给right-bar别名，并修改app.js的呼出逻辑-->">
+    <div class="tpl-right-bar-show">
+        <div class="tpl-card">
+            <div class="tpl-card-head">配色方案</div>
+            <div class="tpl-card-body">
+                <ul class="theme-list">
+                    {volist name="themeInfo" id="val"}
+                    <li class="theme-item" theme-id="{$val.id}">
+                        <div class="theme-head" style="background-color: {$val.head_bg}" bg="{$val.head_bg}" color="{$val.head_color}"></div>
+                        <div class="theme-side" style="background-color: {$val.side_bg}" bg="{$val.side_bg}" color="{$val.side_color}">
+                            <div class="theme-logo" style="background-color: {$val.logo_bg}" bg="{$val.logo_bg}" color="{$val.logo_color}"></div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{$theme_info|raw}

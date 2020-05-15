@@ -1,0 +1,479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>layAdmin后台管理系统模板</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/app.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="tpl-app <!--{$Think.session.app_style} .tpl-small-app 为折叠状态-->">
+    <!--头部-->
+    <!--{include file="public/tpl-head"/}-->
+    <div class="tpl-header tpl-left">
+        <div class="tpl-header-item">
+            <ul class="tpl-head-nav left-item">
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="tpl-dent"><i class="layui-icon layui-icon-shrink-right"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" target="_blank"><i class="layui-icon layui-icon-website"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href=""><i class="layui-icon layui-icon-refresh"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <input type="text" class="search" placeholder="搜索...">
+                </li>
+            </ul>
+            <ul class="tpl-head-nav right-item">
+                <li class="tpl-head-nav-item">
+                    <a href="../msg/index.html"><i class="layui-icon layui-icon-notice"></i></a>
+                    <span class="tpl-badeg"></span>
+                </li>
+                <li class="tpl-head-nav-item theme">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-theme"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="screen"><i class="layui-icon layui-icon-screen-full"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="user-item">新用户-A0001 <i class="fa caret fa-caret-down"></i></a>
+                    <ul class="child-nav">
+                        <span class="triangle"><em></em></span>
+                        <li>
+                            <a href="javascript:;"><i class="fa fa-user-o"></i>个人中心</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="fa fa-key"></i>修改密码</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="logout"><i class="fa fa-sign-out"></i>退出登陆</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--导航栏-->
+    <div class="tpl-side">
+        <div class="tpl-side-menu">
+            <div class="tpl-user-image">
+                <span class="user-name">layAdmin</span>
+                <a href="javascript:;" class="user-logo"><img src="../../static/images/logo.jpg"></a>
+            </div>
+            <ul class="tpl-nav">
+                <div class="tpl-nav-body">
+                    <li class="nav-item">
+                        <a href="../../index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-home nav-icon"></i>
+                            <span>主页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../auth/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-user nav-icon"></i>
+                            <span>权限控制台</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../auth/auth_add.html">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span>添加权限</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../auth/rule_index.html">
+                                    <i class="fa fa-users"></i>
+                                    <span>角色组管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../auth/user_index.html">
+                                    <i class="fa fa-user-o"></i>
+                                    <span>用户管理</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../control/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-set nav-icon"></i>
+                            <span>设置</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../control/index.html">
+                                    <i class="fa fa-cogs"></i>
+                                    <span>网站设置</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/tdk.html">
+                                    <i class="fa fa-edge"></i>
+                                    <span>TDK管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../push/push_message.html">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span>推送消息</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../mysql/index.html">
+                                    <i class="fa fa-table"></i>
+                                    <span>数据表管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/site_index.html">
+                                    <i class="fa fa-theme"></i>
+                                    <span>自定义UI管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../email/index.html">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span>邮件管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/module_index.html">
+                                    <i class="fa fa-gear"></i>
+                                    <span>模块管理</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../auth/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-user nav-icon"></i>
+                            <span>用户</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../user/login.html">
+                                    <i class="fa fa-user-o"></i>
+                                    <span>登陆页面</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../user/register.html">
+                                    <i class="fa fa-user"></i>
+                                    <span>注册页面</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+            <ul class="tpl-bottom-nav">
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-notice"></i></a>
+                </li>
+                <li class="tpl-head-nav-item theme">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-theme"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-username"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-edit"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-body">
+        <div class="tpl-show">
+            <div class="tpl-sub-header">
+                <!--面包屑-->
+                <!--{include file="public/tpl-crumbs"/}-->
+                <div class="crumbs">
+                    <a href="#">首页</a>
+                    <i>/</i>
+                </div>
+            </div>
+            <div class="tpl-fluid">
+                <div class="tpl-pannel">
+                    <div class="layui-row layui-col-space8">
+                        <div class="layui-col-md7">
+                            <div class="tpl-card">
+                                <div class="tpl-card-head">推送消息</div>
+                                <div class="tpl-card-body">
+                                    <form class="layui-form" id="message_form">
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">标题</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="title" required placeholder="推送消息的标题" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">标题链接</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" name="url" placeholder="消息标题的跳转链接，可以为空" autocomplete="off" class="layui-input">
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">消息类型</label>
+                                            <div class="layui-input-block">
+                                                <li class="tpl-select"><span class="selected_text">请选择类型</span><i class="fa fa-caret-down caret"></i>
+                                                    <ul class="type_list">
+                                                        {volist name="mtp" id="val"}
+                                                        <li><a href="javascript:;" class="el" value="{$val.id}">{$val.name}</a></li>
+                                                        {/volist}
+                                                    </ul>
+                                                </li>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">推送内容</label>
+                                            <div class="layui-input-block">
+                                                <textarea id="message-content" style="display: none;"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="layui-form-item">
+                                            <label class="layui-form-label">推送接口</label>
+                                            <div class="layui-input-block">
+                                                <select name="city" lay-verify="required">
+                                                    <option value="0">前端用户</option>
+                                                    <option value="1">后端用户</option>
+                                                </select>
+                                            </div>
+                                        </div>-->
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">推送目标</label>
+                                            <div class="layui-input-block">
+                                                <input type="radio" name="tag" value="all" title="所有人" checked>
+                                                <input type="radio" name="tag" value="0" title="普通用户">
+                                                <input type="radio" name="tag" value="1" title="会员">
+                                            </div>
+                                        </div>
+
+                                        <div class="layui-form-item">
+                                            <div class="layui-input-block">
+                                                <button class="layui-btn layui-btn-sm">立即提交</button>
+                                                <a href="{:url('index')}" class="layui-btn layui-btn-sm layui-btn-primary">返回上一页</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md5">
+                            <div class="tpl-card">
+                                <div class="tpl-card-head">历史推送</div>
+                                <div class="tpl-card-body">
+                                    <!--<div class="message-list">
+                                        <p class="msg-title"><a href="">Hello World!</a></p>
+                                        <div class="msg-content">
+                                            您好，您在文章「<a href="">哪些是最受欢迎的网络营销方式？</a>」中举报的（平淡是你）评论，该评论属于正常评论，感谢您为社区环境所贡献的力量~
+                                        </div>
+                                    </div>-->
+                                    <table id="message"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--侧边栏-->
+    <!--{include file="public/tpl-right-bar"/}-->
+    <div class="tpl-right-bar">
+        <div class="tpl-right-bar-show">
+            <div class="tpl-card">
+                <div class="tpl-card-head">配色方案</div>
+                <div class="tpl-card-body">
+                    <ul class="theme-list">
+                        <li class="theme-item" theme-id="1">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444444"></div>
+                            <div class="theme-side" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="2">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444444"></div>
+                            <div class="theme-side" style="background-color: #50314F" bg="#50314F" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #50314F" bg="#50314F" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="3">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #333f58" bg="#333f58" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #1E9FFF" bg="#1E9FFF" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="4">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #2e9688" bg="#2e9688" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #2e9688" bg="#2e9688" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="5">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #f78400" bg="#f78400" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="6">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #242d38" bg="#242d38" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #AA3130" bg="#AA3130" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="7">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #3A3D49" bg="#3A3D49" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="8">
+                            <div class="theme-head" style="background-color: #2F9688" bg="#2F9688" color="#ffffff"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #226A62" bg="#226A62" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="9">
+                            <div class="theme-head" style="background-color: #393d49" bg="#393d49" color="#ffffff"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="10">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#4f4f4f"></div>
+                            <div class="theme-side" style="background-color: #ad5fcf" bg="#ad5fcf" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="11">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222A" bg="#20222A" color="#b91a1a">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="#b91a1a"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="12">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #0a5541" bg="#0a5541" color="#eda438">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="13">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#626262"></div>
+                            <div class="theme-side" style="background-color: #f44336" bg="#f44336" color="#fbfbfb">
+                                <div class="theme-logo" style="background-color: #f44336" bg="#f44336" color="#fbfbfb"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/js/app.js"></script>
+<script>
+    layui.use(['jquery','table','layedit'],function() {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var lay_edit = layui.layedit;
+        lay_edit.set({
+            uploadImage: {
+                url: "{:url('upload')}",
+                type: 'post',
+                dataType: "json",
+                ext: 'jsp|png|gif',
+            }
+        });
+        var msgEdit = lay_edit.build('message-content', {
+            height: 320
+        });
+        table.render({
+            elem: "#message",
+            url: "{:url('message_json')}",
+            page: true,
+            cols: [[
+                {field: 'title', title: '标题'},
+                {field: 'type', title: '类型',width: 100},
+                {field: 'push_type', title: '人群',width: 90},
+                {field: 'times', title: '发送时间'},
+            ]]
+        })
+        $('.add_type').on('click',function () {
+            layer.prompt({title: '请输入消息类型的名称', formType: 3}, function(name, index){
+                layer.close(index);
+                layer.load(1);
+                $.ajax({
+                    url: "{:url('add_type')}",
+                    type: 'post',
+                    data: {
+                        name: name
+                    },
+                    success: function (d) {
+                        layer.closeAll('loading');
+                        if (d.code == 0) {
+                            window.location.reload();
+                        }
+                        layer.msg(d.msg);
+                    }
+                })
+            });
+        })
+
+        $("#message_form").submit(function (e) {
+            e.preventDefault();
+            let title = $("input[name='title']").val();
+            let url = $("input[name='url']").val();
+            let content = lay_edit.getContent(msgEdit);
+            let type = $('.type_select ').attr('value');
+            let tag = $("input[name='tag']:checked").val();
+            let push_type = $("input[name='tag']:checked").attr('title');
+            console.log(push_type);
+            if (typeof type == 'undefined' || type == '') {
+                layer.msg('请选择消息分类');
+                return false;
+            } else if (title == '') {
+                layer.msg('请输入消息标题');
+                return false;
+            } else if (content == '') {
+                layer.msg('请输入消息内容');
+                return false;
+            } else if (tag == '') {
+                layer.msg('请选择推送目标');
+                return false;
+            }
+            layer.load(1);
+            $.ajax({
+                url: "{:url('push_message')}",
+                type: 'post',
+                data: {
+                    title: title,
+                    url: url,
+                    content: content,
+                    type: type,
+                    tag: tag,
+                    push_type: push_type
+                },
+                success: function (d) {
+                    layer.closeAll('loading');
+                    if (d.code == 0) {
+                        window.location.reload();
+                    }
+                    layer.msg(d.msg);
+                }
+            })
+            return false;
+        })
+    })
+</script>
+</body>
+</html>

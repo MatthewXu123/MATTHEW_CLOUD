@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--STATUS OK-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>新版本推一把后台管理系统</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/login.css">
+
+</head>
+<body>
+<div class="tpl-wrap">
+    <div class="tpl-user-modal-wrapper">
+        <div class="tpl-modal">
+            <a href="../../index.html" target="_blank" class="logo"><img src="../../static/images/logo.jpg" alt=""></a>
+            <div class="tpl-modal-item">
+                <div class="left-form-item">
+                    <form autocomplete="off">
+                        <p class="sub-title">layAdmin管理系统-通行证</p>
+                        <div class="group">
+                            <label><i class="fa fa-user-o"></i></label>
+                            <input type="text" name="username" class="inp" placeholder="请输入用户名或邮箱">
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-lock"></i></label>
+                            <input type="password" name="password" class="inp" placeholder="请输入密码">
+                        </div>
+                        <div class="group">
+                            <label><i class="fa fa-barcode"></i></label>
+                            <input type="text" name="code" class="inp" placeholder="请输入验证码">
+                            <img src="../../static/images/captcha.png" class="code-img" alt="">
+                        </div>
+                        <div class="group sm-font">
+                            <label for="remember">
+                            <input type="checkbox" id="remember">
+                            <span class="option"><span class="option-item"><span class="opspan"></span></span></span>
+                            <span class="check-text">记住我</span>
+                            </label>
+                        </div>
+                        <div class="group">
+                            <button class="submit">登陆</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="right-bg-item">
+                    <img src="../../static/images/right-bg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery.min.js"></script>
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/js/app.js"></script>
+<script>
+    // 验证码的点击切换
+    $('.code-img').on('click',function(){
+        $(this).attr('src','');
+        $(this).attr('src',"{:url('captcha')}");
+    })
+    // 表单提交
+    $('form').submit(function (e) {
+        e.preventDefault();
+        let remember = 0;
+        if ($('#remember').prop("checked") === true) {
+            remember = 1;
+        }
+        let username = $("input[name='username']").val();
+        let password = $("input[name='password']").val();
+        let code = $("input[name='code']").val();
+        if (username == '') {
+            layer.msg('请输入用户名或者邮箱');
+        } else if (password == '') {
+            layer.msg('请输入密码');
+        } else if (code == '') {
+            layer.msg('请输入验证码');
+        } else {
+            $.ajax({
+                url: "{:url('login')}",
+                type: 'post',
+                data: {
+                    username: username,
+                    password: password,
+                    code: code,
+                    remember: remember
+                },
+                success: function (d) {
+                    layer.closeAll('loading');
+                    if (d.code != 0) {
+                        $('.code-img').attr('src','');
+                        $('.code-img').attr('src',"{:url('captcha')}");
+                    } else {
+                        window.location.href = "{:url('index/index')}";
+                    }
+                    layer.msg(d.msg);
+                },
+                error: function(e) {
+                    layer.closeAll('loading');
+                    layer.msg(e);
+                }
+            })
+
+        }
+        return false;
+    })
+</script>
+</body>
+</html>

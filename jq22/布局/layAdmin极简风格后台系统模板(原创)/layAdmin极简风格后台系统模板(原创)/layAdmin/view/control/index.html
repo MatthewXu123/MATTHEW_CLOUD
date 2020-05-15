@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>layAdmin后台管理系统模板</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/app.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .layui-form-label{
+            font-size: 13px;
+        }
+        .tpl-inline-text{
+            float: left;
+            line-height: 38px;
+            color: #555;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="tpl-app <!--{$Think.session.app_style} .tpl-small-app 为折叠状态-->">
+    <!--头部-->
+    <!--{include file="public/tpl-head"/}-->
+    <div class="tpl-header tpl-left">
+        <div class="tpl-header-item">
+            <ul class="tpl-head-nav left-item">
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="tpl-dent"><i class="layui-icon layui-icon-shrink-right"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" target="_blank"><i class="layui-icon layui-icon-website"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href=""><i class="layui-icon layui-icon-refresh"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <input type="text" class="search" placeholder="搜索...">
+                </li>
+            </ul>
+            <ul class="tpl-head-nav right-item">
+                <li class="tpl-head-nav-item">
+                    <a href="../msg/index.html"><i class="layui-icon layui-icon-notice"></i></a>
+                    <span class="tpl-badeg"></span>
+                </li>
+                <li class="tpl-head-nav-item theme">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-theme"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="screen"><i class="layui-icon layui-icon-screen-full"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;" class="user-item">新用户-A0001 <i class="fa caret fa-caret-down"></i></a>
+                    <ul class="child-nav">
+                        <span class="triangle"><em></em></span>
+                        <li>
+                            <a href="javascript:;"><i class="fa fa-user-o"></i>个人中心</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;"><i class="fa fa-key"></i>修改密码</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="logout"><i class="fa fa-sign-out"></i>退出登陆</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--导航栏-->
+    <div class="tpl-side">
+        <div class="tpl-side-menu">
+            <div class="tpl-user-image">
+                <span class="user-name">layAdmin</span>
+                <a href="javascript:;" class="user-logo"><img src="../../static/images/logo.jpg"></a>
+            </div>
+            <ul class="tpl-nav">
+                <div class="tpl-nav-body">
+                    <li class="nav-item">
+                        <a href="../../index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-home nav-icon"></i>
+                            <span>主页</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../auth/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-user nav-icon"></i>
+                            <span>权限控制台</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../auth/auth_add.html">
+                                    <i class="fa fa-plus-circle"></i>
+                                    <span>添加权限</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../auth/rule_index.html">
+                                    <i class="fa fa-users"></i>
+                                    <span>角色组管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../auth/user_index.html">
+                                    <i class="fa fa-user-o"></i>
+                                    <span>用户管理</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../control/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-set nav-icon"></i>
+                            <span>设置</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../control/index.html">
+                                    <i class="fa fa-cogs"></i>
+                                    <span>网站设置</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/tdk.html">
+                                    <i class="fa fa-edge"></i>
+                                    <span>TDK管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../push/push_message.html">
+                                    <i class="fa fa-comment-o"></i>
+                                    <span>推送消息</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../mysql/index.html">
+                                    <i class="fa fa-table"></i>
+                                    <span>数据表管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/site_index.html">
+                                    <i class="fa fa-theme"></i>
+                                    <span>自定义UI管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../email/index.html">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span>邮件管理</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../control/module_index.html">
+                                    <i class="fa fa-gear"></i>
+                                    <span>模块管理</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../auth/index.html" class="nav-item-link">
+                            <i class="layui-icon layui-icon-user nav-icon"></i>
+                            <span>用户</span>
+                            <i class="fa fa-caret-right nav-right-icon"></i>
+                        </a>
+                        <ul class="child-nav">
+                            <li class="child-nav-item">
+                                <a href="../user/login.html">
+                                    <i class="fa fa-user-o"></i>
+                                    <span>登陆页面</span>
+                                </a>
+                            </li>
+                            <li class="child-nav-item">
+                                <a href="../user/register.html">
+                                    <i class="fa fa-user"></i>
+                                    <span>注册页面</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+            <ul class="tpl-bottom-nav">
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-notice"></i></a>
+                </li>
+                <li class="tpl-head-nav-item theme">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-theme"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-username"></i></a>
+                </li>
+                <li class="tpl-head-nav-item">
+                    <a href="javascript:;"><i class="layui-icon layui-icon-edit"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tpl-body">
+        <div class="tpl-show">
+            <div class="tpl-sub-header">
+                <!--面包屑-->
+                <!--{include file="public/tpl-crumbs"/}-->
+                <div class="crumbs">
+                    <a href="#">首页</a>
+                    <i>/</i>
+                </div>
+            </div>
+            <div class="tpl-fluid">
+                <div class="tpl-card">
+                    <div class="tpl-card-head">网站设置 <a href="javascript:;" class="question-o" tip="此页面所有设置项仅对前台网页生效"><i class="fa fa-question-circle-o"></i></a></div>
+                    <div class="tpl-card-body">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">网站名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="name" value="{$info.sitename}" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">网站域名</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="url" value="{$info.siteurl}" placeholder="请输入包含http(https)的完整域名" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">缓存时间</label>
+                                <div class="layui-input-inline" style="width: 80px;">
+                                    <input type="text" name="time" lay-verify="number" value="{$info.cachetime}" class="layui-input">
+                                </div>
+                                <div class="tpl-inline-text">分钟</div>
+                                <div class="layui-form-mid layui-word-aux">本地开发环境一般推荐设置为 0，线上环境建议设置为 10。</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">最大文件上传</label>
+                                <div class="layui-input-inline" style="width: 80px;">
+                                    <input type="text" name="filesize" lay-verify="number" value="{$info.filesize}" class="layui-input">
+                                </div>
+                                <div class="tpl-inline-text">KB</div>
+                                <div class="layui-form-mid layui-word-aux">1024 KB = 1 M</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">网站logo</label>
+                                <div class="layui-input-inline" style="width: 50%;">
+                                    <input type="text" name="logo" value="{$info.logo}" placeholder="推荐尺寸50px*50px" class="layui-input">
+                                </div>
+                                <div class="tpl-inline-text"><img style="border: 1px solid #D2D2D2;width: 50px;height: 50px;border-radius: 3px;" src="{$info.logo}" class="logoimg"></div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;" id="logo-upload"><i class="fa fa-upload"></i></a></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">网站ico</label>
+                                <div class="layui-input-inline" style="width: 50%;">
+                                    <input type="text" name="ico" value="{$info.ico}" placeholder="推荐尺寸32px*32px" class="layui-input">
+                                </div>
+                                <div class="tpl-inline-text"><img style="border: 1px solid #D2D2D2;width: 32px;height: 32px;border-radius: 3px;" src="{$info.ico}" class="icoimg"></div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;" id="ico-upload"><i class="fa fa-upload"></i></a></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">允许上传类型</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="ext" value="{$info.fileext}" placeholder="如有多个请使用英文,隔开" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">统计代码</label>
+                                <div class="layui-input-block">
+                                    <textarea id="hm" style="min-height: 200px" placeholder="不需要<script></script>标签" class="layui-textarea">{$info.hm}</textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">版权信息</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="copyright" value="{$info.copyright}" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即保存</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--侧边栏-->
+    <!--{include file="public/tpl-right-bar"/}-->
+    <div class="tpl-right-bar">
+        <div class="tpl-right-bar-show">
+            <div class="tpl-card">
+                <div class="tpl-card-head">配色方案</div>
+                <div class="tpl-card-body">
+                    <ul class="theme-list">
+                        <li class="theme-item" theme-id="1">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444444"></div>
+                            <div class="theme-side" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="2">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444444"></div>
+                            <div class="theme-side" style="background-color: #50314F" bg="#50314F" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #50314F" bg="#50314F" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="3">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #333f58" bg="#333f58" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #1E9FFF" bg="#1E9FFF" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="4">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #2e9688" bg="#2e9688" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #2e9688" bg="#2e9688" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="5">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #f78400" bg="#f78400" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="6">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #242d38" bg="#242d38" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #AA3130" bg="#AA3130" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="7">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #3A3D49" bg="#3A3D49" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="8">
+                            <div class="theme-head" style="background-color: #2F9688" bg="#2F9688" color="#ffffff"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #226A62" bg="#226A62" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="9">
+                            <div class="theme-head" style="background-color: #393d49" bg="#393d49" color="#ffffff"></div>
+                            <div class="theme-side" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222a" bg="#20222a" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="10">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#4f4f4f"></div>
+                            <div class="theme-side" style="background-color: #ad5fcf" bg="#ad5fcf" color="rgba(255,255,255,.8)">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="11">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #20222A" bg="#20222A" color="#b91a1a">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="#b91a1a"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="12">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#444"></div>
+                            <div class="theme-side" style="background-color: #0a5541" bg="#0a5541" color="#eda438">
+                                <div class="theme-logo" style="background-color: #20222A" bg="#20222A" color="rgba(255,255,255,.8)"></div>
+                            </div>
+                        </li>
+                        <li class="theme-item" theme-id="13">
+                            <div class="theme-head" style="background-color: #ffffff" bg="#ffffff" color="#626262"></div>
+                            <div class="theme-side" style="background-color: #f44336" bg="#f44336" color="#fbfbfb">
+                                <div class="theme-logo" style="background-color: #f44336" bg="#f44336" color="#fbfbfb"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../static/layui/layui.js"></script>
+<script src="../../static/js/app.js"></script>
+<script>
+    layui.use(['jquery','table','upload'],function() {
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        // logo框编辑
+        $("input[name='logo']").change(function(e){
+            let val = $(this).val();
+            if (val == '') return false;
+            $('.logoimg').attr('src',val);
+        })
+        // ico框编辑
+        $("input[name='ico']").change(function(e){
+            let val = $(this).val();
+            if (val == '') return false;
+            $('.icoimg').attr('src',val);
+        })
+        // logo上传
+        upload.render({
+            elem: "#logo-upload",
+            url: "{:url('import')}",
+            exts: 'jpg|png|jpeg',
+            choose: function(){
+                layer.load(1);
+            },
+            done: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 0) {
+                    $("input[name='logo']").val(res.path);
+                    $('.logoimg').attr('src',res.path);
+                }
+                layer.closeAll('loading');
+            },
+            error: function () {
+                layer.closeAll('loading');
+            }
+        })
+        // ico上传
+        upload.render({
+            elem: "#ico-upload",
+            url: "{:url('import')}",
+            exts: 'jpg|png|jpeg|ico',
+            choose: function(){
+                layer.load(1);
+            },
+            done: function (res) {
+                layer.msg(res.msg);
+                if (res.code == 0) {
+                    $("input[name='ico']").val(res.path);
+                    $('.icoimg').attr('src',res.path);
+                }
+                layer.closeAll('loading');
+            },
+            error: function () {
+                layer.closeAll('loading');
+            }
+        })
+        // 发送表单
+        $("form").submit(function(e){
+            e.preventDefault();
+            let name = $("input[name='name']").val();
+            let url = $("input[name='url']").val();
+            let time = $("input[name='time']").val();
+            let filesize = $("input[name='filesize']").val();
+            let ext = $("input[name='ext']").val();
+            let hm = $("#hm").val();
+            let copyright = $("input[name='copyright']").val();
+            let logo = $("input[name='logo']").val();
+            let ico = $("input[name='ico']").val();
+            layer.load(1);
+            $.ajax({
+                url: '',
+                type: 'post',
+                data: {
+                    name: name,
+                    url: url,
+                    time: time,
+                    filesize: filesize,
+                    ext: ext,
+                    hm: hm,
+                    logo: logo,
+                    ico: ico,
+                    copyright: copyright
+                },
+                success: function (d) {
+                    layer.msg(d.msg);
+                    layer.closeAll('loading');
+                },
+                error: function (e) {
+                    layer.msg(e);
+                    layer.closeAll('loading');
+                }
+            })
+            return false;
+        })
+    })
+</script>
+</body>
+</html>

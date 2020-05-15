@@ -1,0 +1,51 @@
+<div class="tpl-side">
+    <div class="tpl-side-menu">
+        <div class="tpl-user-image">
+            <span class="user-name">推一把</span>
+            <a href="javascript:;" class="user-logo"><img src="_STATIC_/admin/images/logo.jpg"></a>
+        </div>
+        <ul class="tpl-nav">
+            <div class="tpl-nav-body">
+                {volist name="nav_auth" id="val"}
+                <li class="nav-item">
+                    <a href="../{$val.auth_c}/{$val.auth_f}.html" class="nav-item-link">
+                        <i class="{if condition="$val.icon_type == 1"}fa fa-{$val.icon}{else}layui-icon layui-icon-{$val.icon}{/if} nav-icon"></i>
+                        <span>{$val.auth_name}</span>
+                        {if condition="$val.child == 1"}
+                        <i class="fa fa-caret-right nav-right-icon"></i>
+                        {/if}
+                    </a>
+                    {if condition="$val.child == 1"}
+                    <ul class="child-nav">
+                        {volist name="nav_auth_child" id="v"}
+                        {if condition="$val.id === $v.auth_pid"}
+                        <li class="child-nav-item">
+                            <a href="../{$v.auth_c}/{$v.auth_f}.html">
+                                <i class="fa fa-{$v.icon}"></i>
+                                <span>{$v.auth_name}</span>
+                            </a>
+                        </li>
+                        {/if}
+                        {/volist}
+                    </ul>
+                    {/if}
+                </li>
+                {/volist}
+            </div>
+        </ul>
+        <ul class="tpl-bottom-nav">
+            <li class="tpl-head-nav-item">
+                <a href="javascript:;"><i class="layui-icon layui-icon-notice"></i></a>
+            </li>
+            <li class="tpl-head-nav-item theme">
+                <a href="javascript:;"><i class="layui-icon layui-icon-theme"></i></a>
+            </li>
+            <li class="tpl-head-nav-item">
+                <a href="javascript:;"><i class="layui-icon layui-icon-username"></i></a>
+            </li>
+            <li class="tpl-head-nav-item">
+                <a href="javascript:;"><i class="layui-icon layui-icon-edit"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
